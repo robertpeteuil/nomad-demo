@@ -1,4 +1,4 @@
-job "minesweeper" {
+job "minesweeper-api" {
 
   datacenters = ["dc1"]
   type = "service"
