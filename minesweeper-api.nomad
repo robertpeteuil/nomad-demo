@@ -1,6 +1,6 @@
-job "demo" {
-  datacenters = ["dc1"]
+job "minesweeper" {
 
+  datacenters = ["dc1"]
   type = "service"
 
   update {
@@ -33,8 +33,7 @@ job "demo" {
       size = 300
     }
 
-    # TODO: make this a docker hub repo
-    task "minesweeper-api" {
+    task "api" {
       driver = "docker"
 
       config {
