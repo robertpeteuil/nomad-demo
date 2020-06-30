@@ -52,13 +52,13 @@ job "minesweeper" {
     }
   }
 
-  group "minesweeper-frontend" {
+  group "minesweeper-app" {
     count = 1
 
-    task "frontend" {
+    task "app" {
       driver = "java"
       config {
-        jar_path = "/Users/neil/src/github.com/dahlke/nomad-demo/spring-react-boilerplate-1.0.0-SNAPSHOT.jar"
+        jar_path = "/Users/neil/src/github.com/dahlke/nomad-demo/minesweeper-app-1.0.0-SNAPSHOT.jar"
       }
 
       resources {
@@ -66,16 +66,16 @@ job "minesweeper" {
           memory = 300
 
           network {
-            port "frontend" {
+            port "app" {
                 static = 8080
             }
         }
       }
 
       service {
-        name = "minesweeper-frontend"
-        tags = ["global", "frontend"]
-        port = "frontend"
+        name = "minesweeper-app"
+        tags = ["global", "app"]
+        port = "app"
 
         check {
           name     = "alive"
