@@ -1,12 +1,20 @@
 # nomad-demo
 
-### Nomad Agent Shell 
+## Consul Agent Shell
+
+``` sh
+sudo consul agent -dev
 ```
+
+## Nomad Agent Shell
+
+``` sh
 sudo nomad agent -dev
 ```
 
-### Nomad Job Shell
-```
-nomad job run minesweeper-frontend.nomad
+## Nomad Job Shell
+
+``` sh
+nomad job run minesweeper-app.nomad
 nomad job run minesweeper-api.nomad
 ```
