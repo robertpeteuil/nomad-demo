@@ -1,6 +1,6 @@
 job "minesweeper-app" {
   datacenters = ["dc1"]
-  type = "service"
+  type        = "service"
 
   group "minesweeper-app" {
     count = 1
@@ -8,17 +8,17 @@ job "minesweeper-app" {
     task "app" {
       driver = "java"
       config {
-        jar_path = "/Users/neil/src/github.com/dahlke/nomad-demo/minesweeper-app-1.0.0-SNAPSHOT.jar"
+        jar_path = "/Users/robertpeteuil/Versioned/demo/nomad/nomad-demo/minesweeper-app-1.0.0-SNAPSHOT.jar"
       }
 
       resources {
-          cpu    = 500
-          memory = 300
+        cpu    = 500
+        memory = 500
 
-          network {
-            port "app" {
-                static = 8080
-            }
+        network {
+          port "app" {
+            static = 8080
+          }
         }
       }
 
@@ -31,7 +31,7 @@ job "minesweeper-app" {
           name     = "alive"
           type     = "tcp"
           interval = "10s"
-          timeout  = "2s"
+          timeout  = "5s"
         }
       }
     }

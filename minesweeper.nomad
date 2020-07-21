@@ -1,7 +1,7 @@
 job "minesweeper" {
 
   datacenters = ["dc1"]
-  type = "service"
+  type        = "service"
 
   group "minesweeper-api" {
     count = 1
@@ -9,8 +9,8 @@ job "minesweeper" {
     restart {
       attempts = 2
       interval = "30m"
-      delay = "15s"
-      mode = "fail"
+      delay    = "15s"
+      mode     = "fail"
     }
 
     ephemeral_disk {
@@ -21,8 +21,8 @@ job "minesweeper" {
       driver = "docker"
 
       config {
-        image = "eklhad/minesweeper:latest"
-        
+        image = "robpco/minesweeper:latest"
+
         port_map {
           api = 3000
         }
@@ -31,8 +31,8 @@ job "minesweeper" {
       resources {
         network {
           mbits = 10
-          port  "api"  {
-              static = 3000
+          port "api" {
+            static = 3000
           }
         }
       }
@@ -46,7 +46,7 @@ job "minesweeper" {
           name     = "alive"
           type     = "tcp"
           interval = "10s"
-          timeout  = "2s"
+          timeout  = "5s"
         }
       }
     }
@@ -58,17 +58,17 @@ job "minesweeper" {
     task "app" {
       driver = "java"
       config {
-        jar_path = "/Users/neil/src/github.com/dahlke/nomad-demo/minesweeper-app-1.0.0-SNAPSHOT.jar"
+        jar_path = "/Users/robertpeteuil/Versioned/demo/nomad/nomad-demo/minesweeper-app-1.0.0-SNAPSHOT.jar"
       }
 
       resources {
-          cpu    = 500
-          memory = 300
+        cpu    = 500
+        memory = 500
 
-          network {
-            port "app" {
-                static = 8080
-            }
+        network {
+          port "app" {
+            static = 8080
+          }
         }
       }
 
@@ -81,7 +81,7 @@ job "minesweeper" {
           name     = "alive"
           type     = "tcp"
           interval = "10s"
-          timeout  = "2s"
+          timeout  = "5s"
         }
       }
     }

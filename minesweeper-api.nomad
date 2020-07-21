@@ -1,20 +1,20 @@
 job "minesweeper-api" {
 
   datacenters = ["dc1"]
-  type = "service"
+  type        = "service"
 
   update {
-    max_parallel = 1
-    min_healthy_time = "10s"
-    healthy_deadline = "3m"
+    max_parallel      = 1
+    min_healthy_time  = "10s"
+    healthy_deadline  = "3m"
     progress_deadline = "10m"
-    auto_revert = false
-    canary = 0
+    auto_revert       = false
+    canary            = 0
   }
 
   migrate {
-    max_parallel = 1
-    health_check = "checks"
+    max_parallel     = 1
+    health_check     = "checks"
     min_healthy_time = "10s"
     healthy_deadline = "5m"
   }
@@ -25,8 +25,8 @@ job "minesweeper-api" {
     restart {
       attempts = 2
       interval = "30m"
-      delay = "15s"
-      mode = "fail"
+      delay    = "15s"
+      mode     = "fail"
     }
 
     ephemeral_disk {
@@ -37,8 +37,8 @@ job "minesweeper-api" {
       driver = "docker"
 
       config {
-        image = "eklhad/minesweeper:latest"
-        
+        image = "robpco/minesweeper:latest"
+
         port_map {
           api = 3000
         }
@@ -47,8 +47,8 @@ job "minesweeper-api" {
       resources {
         network {
           mbits = 10
-          port  "api"  {
-              static = 3000
+          port "api" {
+            static = 3000
           }
         }
       }
@@ -62,7 +62,7 @@ job "minesweeper-api" {
           name     = "alive"
           type     = "tcp"
           interval = "10s"
-          timeout  = "2s"
+          timeout  = "5s"
         }
       }
     }
