@@ -58,7 +58,7 @@ job "minesweeper" {
     task "app" {
       driver = "java"
       config {
-        jar_path = "/Users/robertpeteuil/Versioned/demo/nomad/nomad-demo/minesweeper-app-1.0.0-SNAPSHOT.jar"
+        jar_path = "/Users/robertpeteuil/Versioned/prod/nomad/nomad-demo/minesweeper-app-1.0.0-SNAPSHOT.jar"
       }
 
       resources {
